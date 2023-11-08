@@ -1,6 +1,7 @@
 from art import logo
-print(logo + "\n")
-# Art shouldn't clear between runs
+
+# Clear() method
+import os
 
 # Methods
 def addition(num1, num2):
@@ -19,11 +20,12 @@ def multiplication(num1, num2):
     result = num1 * num2
     return result
 
-# Description - come back to this!!!!
-print("This is a simple text calculator performing an operation on 2 numbers.")
-print("----------------------------------------------------------------------\n")
-
-# Storage variables 
+def go_again():
+    user_again = input("Press 'y' to perform another calculation and 'n' to exit: ").lower()
+    if user_again == "y":
+        # Clear() in use
+        os.system('cls')
+        final_product()
 
 def text_calculator():
     first_number = int(input("What's the first number? "))
@@ -45,5 +47,12 @@ def text_calculator():
             text_calculator()
 
     print(f"{first_number} {operation} {second_number} = {fin_result}")
+    go_again()
 
-text_calculator()
+def final_product():
+    print(logo)
+    print("This is a simple text calculator performing an operation on 2 numbers.")
+    print("----------------------------------------------------------------------\n")
+    text_calculator()
+
+final_product()

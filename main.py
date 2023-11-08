@@ -1,49 +1,40 @@
-from art import logo
-print(logo + "\n")
-# Art shouldn't clear between runs
+# Calculator
+# This contains the use of dictionaries to hold operations as keys
+# and respective values as methods.
 
-# Methods
-def addition(num1, num2):
-    result = num1 + num2
-    return result
+# Add
+def add(n1, n2):
+    return n1 + n2
+    
+# Subtract
+def subtract(n1, n2):
+    return n1 - n2
+    
+# Multiply
+def multiply(n1, n2):
+    return n1 * n2
+    
+# Divide
+def divide(n1, n2):
+    return n1 / n2
 
-def subtraction(num1, num2):
-    result = num1 - num2
-    return result
+operations = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "/": divide
+}
 
-def division(num1, num2):
-    result = num1 / num2
-    return result
+num1 = int(input("Enter the first number: "))
 
-def multiplication(num1, num2):
-    result = num1 * num2
-    return result
+for key in operations:
+    print(key)
 
-# Description - come back to this!!!!
-print("This is a simple text calculator performing an operation on 2 numbers.")
-print("----------------------------------------------------------------------\n")
+operation_symbol = input("Pick an operation from the line above: ")
 
-# Storage variables 
+num2 = int(input("Enter the second number: "))
 
-def text_calculator():
-    first_number = int(input("What's the first number? "))
-    operation = input("Enter the operand: '+', '-', '/', '*' ")
-    second_number = int(input("What's the second number? "))
+if operation_symbol in operations:
+    answer = operations[operation_symbol](num1, num2)
 
-    match operation:
-        case "+":
-            fin_result = addition(first_number, second_number)
-        case "-":
-            fin_result = subtraction(first_number, second_number)
-        case "/":
-            fin_result = division(first_number, second_number)
-        case "*":
-            fin_result = multiplication(first_number, second_number)
-        case _:
-            print("That's not an operation\n")
-            print("Try again!")
-            text_calculator()
-
-    print(f"{first_number} {operation} {second_number} = {fin_result}")
-
-text_calculator()
+print(f"{num1} {operation_symbol} {num2} = {answer}")
